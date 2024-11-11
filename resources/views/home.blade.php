@@ -12,7 +12,7 @@
                     <a class="dropbtn">Daftar <i class="fas fa-caret-down"></i></a>
                     <div class="dropdown-content">
                         <a href="laga.php">Laga</a>
-                        <a href="senitunggal.html">Seni Tunggal</a>
+                        <a href="{{ route('senitunggal.register') }}">Seni Tunggal</a>
                         <a href="seniganda.html">Seni Ganda</a>
                         <a href="{{ route('seniregu.register') }}">Seni Beregu</a>
                     </div>
@@ -90,7 +90,7 @@
                     <div class="content2">
                         <h4>Pencak Silat Seni Tunggal</h4>
                         <p>Rp 80.000,00</p>
-                        <a href="laga.html" class='btn'>DAFTAR</a>
+                        <a href="{{ route('senitunggal.register') }}" class='btn'>DAFTAR</a>
                     </div>
                 </div>
                 <div class="card2">
