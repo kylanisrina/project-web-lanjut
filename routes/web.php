@@ -2,6 +2,7 @@
 // routes/web.php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SeniGandaController;
 use App\Http\Controllers\SeniReguController;
 use App\Http\Controllers\SeniTunggalController;
 use Illuminate\Support\Facades\Route;
@@ -88,3 +89,44 @@ Route::prefix('admin')->group(function () {
             ->name('admin.show');
     });
 });
+
+// Routes untuk pendaftaran Seni Tunggal (public)
+// Routes untuk pendaftaran Seni Tunggal (public)
+Route::get('/register/seniganda', [SeniGandaController::class, 'create'])->name('seniganda.register');
+Route::post('/register/seniganda', [SeniGandaController::class, 'store'])->name('seniganda.store');
+
+Route::prefix('admin')->group(function () {
+    // Login routes
+    Route::get('/login', [AdminController::class, 'showLoginForm'])
+        ->name('admin.login')
+        ->middleware('guest.admin');
+
+    Route::post('/login', [AdminController::class, 'login'])
+        ->name('admin.login.submit')
+        ->middleware('guest.admin');
+
+    // Admin authenticated routes
+    Route::middleware(['auth:admin'])->group(function () {
+        // Dashboard
+        Route::get('/dashboard', [SeniGandaController::class, 'index'])
+            ->name('admin.dashboard');
+
+        // Logout
+        Route::post('/logout', [AdminController::class, 'logout'])
+            ->name('admin.logout');
+
+        // CRUD routes for Seni Ganda
+        Route::get('/seniganda/{id}/edit', [SeniGandaController::class, 'edit'])
+        ->name('admin.seniganda.edit');
+        Route::put('/seniganda/{id}', [SeniGandaController::class, 'update'])
+        ->name('admin.seniganda.update');
+        Route::delete('/seniganda/{id}', [SeniGandaController::class, 'destroy'])
+        ->name('admin.seniganda.destroy');
+        
+
+        // Optional: Tambahkan route untuk view detail jika diperlukan
+        Route::get('/seniganda/{id}', [SeniGandaController::class, 'show'])
+        ->name('admin.seniganda.show');
+    });
+});
+
