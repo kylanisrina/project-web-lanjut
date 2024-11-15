@@ -13,7 +13,7 @@
                     <div class="dropdown-content">
                         <a href="laga.php">Laga</a>
                         <a href="{{ route('senitunggal.register') }}">Seni Tunggal</a>
-                        <a href="seniganda.html">Seni Ganda</a>
+                        <a href="{{ route('seniganda.register') }}">Seni Ganda</a>
                         <a href="{{ route('seniregu.register') }}">Seni Beregu</a>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                     <div class="content2">
                         <h4>Pencak Silat Seni Ganda</h4>
                         <p>Rp 125.000,00</p>
-                        <a href="seniganda.html" class='btn'>DAFTAR</a>
+                        <a href="{{ route('seniganda.register') }}" class='btn'>DAFTAR</a>
                     </div>
                 </div>
                 <div class="card2">
